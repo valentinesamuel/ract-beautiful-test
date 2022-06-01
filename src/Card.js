@@ -17,7 +17,7 @@ const Card = ({ card, index }) => {
               ...provided.draggableProps.style,
             }}
             >
-                <img className="image" src={card.image}/>
+                <img className="image" alt={card.status} src={card.image}/>
             <p>{card.name}</p>
           </div>
         );

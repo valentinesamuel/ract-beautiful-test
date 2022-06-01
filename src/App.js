@@ -45,15 +45,20 @@ function App() {
   // const [columns, setColumns] = useState(columnsFromBackend);
   const [columns, setColumns] = useState(apiData);
   return (
-    <div className="kanban">
-      <DragDropContext
-        onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
-      >
-        {Object.entries(columns).map(([columnId, column], index) => {
-          return <Table column={column} droppableColumnId={columnId} key={index} />;
-        })}
-      </DragDropContext>
-    </div>
+    <>
+      <div className="kanban">
+        <DragDropContext
+          onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+        >
+          {Object.entries(columns).map(([columnId, column], index) => {
+            return (
+              <Table column={column} droppableColumnId={columnId} key={index} />
+            );
+          })}
+        </DragDropContext>
+      </div>
+     
+    </>
   );
 }
 
