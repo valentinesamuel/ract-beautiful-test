@@ -1,18 +1,38 @@
-
-.table-header {
+.column {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 2px solid #04c731;
-  margin: 0 10px;
-}
-
-.table-body {
+  flex-direction: column;
+  border-right: 2px solid red;
   padding: 0 10px;
 }
 
-.table-header > span {
+.table-header {
+  align-items: center;
+  background-color: aliceblue;
+  border: 1px solid #f4f6f7;
+  border-radius: 4px;
+  position: sticky;
+}
+
+.table-body {
+  overflow-y: scroll;
+  height: 100%;
+  margin-top: 12px;
+}
+
+.table-header > .content {
+  display: flex;
+  align-items: center;
+}
+
+.total {
   background-color: gray;
   padding: 0.5rem;
   margin-left: 20px;
+}
+
+.btm-brdr {
+  height: 2px;
+  border-radius: 0 0 4px 4px;
+  width: 100%;
+  background-color: darkcyan;
 }

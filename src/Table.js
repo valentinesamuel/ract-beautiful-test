@@ -5,41 +5,42 @@ import "./table.css";
 
 const Table = ({ droppableColumnId, column }) => {
   return (
-    <div className="">
-      <div className="table-header">
-        <p>{column.name}</p>
-        <span>{column.cards.length}</span>
-      </div>
-
-      {/* <div style={{ margin: 8 }}>
-
-      </div> */}
-      <Droppable droppableId={droppableColumnId} key={droppableColumnId}>
-        {(provided, snapshot) => {
-          return (
-            <div
-              className="table-body"
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={{
-                background: snapshot.isDraggingOver
-                  ? "lightblue"
-                  : "transparent",
-
-                width: 250,
-                minHeight: 500,
-                borderRight: "3px solid black",
-              }}
-            >
-              {column.cards.map((card, index) => {
-                return <Card card={card} index={index} key={index} />;
-              })}
-              {provided.placeholder}
+    <>
+      <div className="column" key={droppableColumnId}>
+     
+          <div className="table-header">
+            <div className="content">
+            <p>{column.name}</p>
+            <p className="total">{column.cards.length}</p>
             </div>
-          );
-        }}
-      </Droppable>
-    </div>
+            <div className="btm-brdr"></div>
+          </div>
+
+          <Droppable droppableId={droppableColumnId} key={droppableColumnId}>
+            {(provided, snapshot) => {
+              return (
+                <div
+                  className="table-body"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  style={{
+                    background: snapshot.isDraggingOver
+                      ? "lightblue"
+                      : "transparent",
+                  }}
+                >
+                  {column.cards.map((card, index) => {
+                    return <Card card={card} index={index} key={index} />;
+                  })}
+                  {provided.placeholder}
+                </div>
+              );
+            }}
+          </Droppable>
+        
+        <div />
+      </div>
+    </>
   );
 };
 

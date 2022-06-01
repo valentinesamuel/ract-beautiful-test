@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
 import Table from "./Table";
+import "./App.css";
 
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return;
@@ -44,23 +45,12 @@ function App() {
   // const [columns, setColumns] = useState(columnsFromBackend);
   const [columns, setColumns] = useState(apiData);
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%" }}>
+    <div className="kanban">
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
       >
         {Object.entries(columns).map(([columnId, column], index) => {
-          return (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              key={columnId}
-            >
-              <Table column={column} droppableColumnId={columnId} />
-            </div>
-          );
+          return <Table column={column} droppableColumnId={columnId} key={index} />;
         })}
       </DragDropContext>
     </div>
@@ -82,8 +72,7 @@ const apiData = {
         status: "New",
         time: null,
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/men/88.jpg",
       },
       {
         id: uuid(),
@@ -93,8 +82,7 @@ const apiData = {
         status: "New",
         time: "null",
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/men/62.jpg",
       },
     ],
   },
@@ -110,8 +98,7 @@ const apiData = {
         status: "Challenge Sent",
         time: "2 days ago",
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/men/55.jpg",
       },
       {
         id: uuid(),
@@ -121,8 +108,7 @@ const apiData = {
         status: "",
         time: "2 days ago",
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/men/67.jpg",
       },
     ],
   },
@@ -138,8 +124,7 @@ const apiData = {
         status: "Challenge Sent",
         time: "2 days ago",
         phoneInterview: "pass",
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/lego/6.jpg",
       },
       {
         id: uuid(),
@@ -149,8 +134,7 @@ const apiData = {
         status: "Disqalified",
         time: "2 days ago",
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/women/29.jpg",
       },
     ],
   },
@@ -166,8 +150,7 @@ const apiData = {
         status: "",
         time: "2 days ago",
         phoneInterview: null,
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/women/25.jpg",
       },
       {
         id: uuid(),
@@ -177,8 +160,7 @@ const apiData = {
         status: "Disqalified",
         time: "2 days ago",
         phoneInterview: "fail",
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/women/59.jpg",
       },
     ],
   },
@@ -194,8 +176,7 @@ const apiData = {
         status: "Test Scheduled",
         time: "2 days ago",
         phoneInterview: "pass",
-        image:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+        image: "https://randomuser.me/api/portraits/lego/2.jpg",
       },
     ],
   },
