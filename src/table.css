@@ -1,0 +1,18 @@
+
+.table-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #04c731;
+  margin: 0 10px;
+}
+
+.table-body {
+  padding: 0 10px;
+}
+
+.table-header > span {
+  background-color: gray;
+  padding: 0.5rem;
+  margin-left: 20px;
+}

@@ -1,56 +1,46 @@
-import React from 'react'
-import { Draggable } from 'react-beautiful-dnd';
-import { Droppable } from 'react-beautiful-dnd';
+import React from "react";
+import { Droppable } from "react-beautiful-dnd";
+import Card from "./Card";
+import "./table.css";
 
-const Table = ({droppableColumnId, column}) => {
+const Table = ({ droppableColumnId, column }) => {
   return (
-    <Droppable droppableId={droppableColumnId} key={droppableColumnId}>
-      {(provided, snapshot) => {
-        return (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            style={{
-              background: snapshot.isDraggingOver ? "lightblue" : "lightgrey",
-              padding: 4,
-              width: 250,
-              minHeight: 500,
-            }}
-          >
-            {column.cards.map((card, index) => {
-              return (
-                <Draggable key={card.id} draggableId={card.id} index={index}>
-                  {(provided, snapshot) => {
-                    return (
-                      <div
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={{
-                          userSelect: "none",
-                          padding: 16,
-                          margin: "0 0 8px 0",
-                          minHeight: "50px",
-                          backgroundColor: snapshot.isDragging
-                            ? "#263B4A"
-                            : "#456C86",
-                          color: "white",
-                          ...provided.draggableProps.style,
-                        }}
-                      >
-                        {card.name}
-                      </div>
-                    );
-                  }}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </div>
-        );
-      }}
-    </Droppable>
-  );
-}
+    <div className="">
+      <div className="table-header">
+        <p>{column.name}</p>
+        <span>{column.cards.length}</span>
+      </div>
 
-export default Table
+      {/* <div style={{ margin: 8 }}>
+
+      </div> */}
+      <Droppable droppableId={droppableColumnId} key={droppableColumnId}>
+        {(provided, snapshot) => {
+          return (
+            <div
+              className="table-body"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{
+                background: snapshot.isDraggingOver
+                  ? "lightblue"
+                  : "transparent",
+
+                width: 250,
+                minHeight: 500,
+                borderRight: "3px solid black",
+              }}
+            >
+              {column.cards.map((card, index) => {
+                return <Card card={card} index={index} key={index} />;
+              })}
+              {provided.placeholder}
+            </div>
+          );
+        }}
+      </Droppable>
+    </div>
+  );
+};
+
+export default Table;

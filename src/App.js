@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DragDropContext} from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
 import Table from "./Table";
 
@@ -58,10 +58,7 @@ function App() {
               }}
               key={columnId}
             >
-              <h2>{column.name}</h2>
-              <div style={{ margin: 8 }}>
-                <Table column={column} droppableColumnId={ columnId}/>
-              </div>
+              <Table column={column} droppableColumnId={columnId} />
             </div>
           );
         })}
